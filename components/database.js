@@ -18,12 +18,12 @@ class Database {
     firebase.initializeApp(firebaseConfig);
   }
 
-  async createAccount(Account)//add autoGenarate
+  createAccount(Account,add_success,add_fail)//add autoGenarate
   {
-    firebase.firestore().collection("Account").add(Account);
+    firebase.firestore().collection("Account").add(Account).then(ref=>{add_success(ref.id)},add_fail);
   }
 
-  async createAccount2(Account)//add set doc
+  createAccount2(Account)//add set doc
   {
     firebase.firestore().collection("Account").doc("Test").set(Account);
   }

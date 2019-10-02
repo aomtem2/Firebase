@@ -18,17 +18,24 @@ class Login extends React.Component {
     lastName: '',
   };
 
-  onPressAddAccount = async() => {
+  onPressAddAccount = () => {
     account={
       FirstName:this.state.firstName,
       lastName:this.state.lastName,
 
     }
-    // await database.createAccount(account);
-    await database.createAccount2(account);
+     database.createAccount(account,this.add_success,this.add_fail);
+    // await database.createAccount2(account,this.add_success,this.add_fail);
 
 
   };
+  add_success=()=>{
+    console.log(id);
+  }
+
+  add_fail=()=>{
+      console.log("Fail");
+  }
 
 
 
